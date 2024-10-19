@@ -26,4 +26,28 @@ async function SigUp(req, res) {
       console.log(error);
     }
   }
+
+  async function Login(req, res) {
+    try {
+      const { email, password } = req.body;
+  
+      if (!email || !password) {
+        return res.status(200).json({ EnterAllDetails: "Please fill all the fields" });
+      }
+  
+      const isUserExist = await Schema.findOne({ email: email });
+      if (!isUserExist) {
+        return res.status(200).json({ NotExist: "User does not exist" });
+      }
+  
+      if (password !== isUserExist.password) {
+        return res.status(200).json({ Incorrect: "Incorrect password" });
+      }
+  
+      return res.json(isUserExist);
+    } catch (error) { 
+      console.log(error);
+    }
+  }
+  
   
