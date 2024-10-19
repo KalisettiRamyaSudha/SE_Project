@@ -1,0 +1,146 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+  }
+  
+  .formContainer {
+    width: 400px;
+    background-color: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  .title {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #4a90e2;
+  }
+  
+  .inputContainer1 {
+    position: relative;
+    margin-bottom: 2rem;
+  }
+  
+  .inputContainer2 {
+    position: relative;
+  }
+  
+  .eyeIcon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #aaa;
+    font-size: 1.2rem;
+  }
+  
+  .eyeIcon:hover {
+    color: #4a90e2;
+  }
+  
+  
+  .icon {
+    position: absolute;
+    left: 10px;  /* Position the icon on the left */
+    top: 50%;
+    transform: translateY(-50%);
+    color: #aaa;
+    font-size: 1.2rem;
+  }
+  
+  .input {
+    width: 87%;
+    padding: 10px 10px 10px 40px; /* Adjust padding for icon */
+    border: none;
+    border-bottom: 2px solid #aaa;
+    outline: none;
+    font-size: 16px;
+    color: #333;
+    transition: border-color 0.2s;
+    
+  }
+  
+  .underline {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px; /* Height of the underline */
+    background: transparent; /* Initial background */
+    transform: scaleX(0); /* Start with no underline visible */
+    transform-origin: center; /* Start scaling from the center */
+    transition: transform 0.6s ease, background-color 0.4s ease; /* Smooth transition for the underline */
+  }
+  
+  .input:focus + .underline {
+    background: #4a90e2; /* Change background color of underline on focus */
+    transform: scaleX(1); /* Expand the underline from the center */
+  }
+  
+  .floatingLabel {
+    top: -15px;
+    left: 40px;
+    font-size: 12px;
+    color: #4a90e2;
+  }
+  
+  .label {
+    position: absolute;
+    top: 10px;
+    left: 40px; /* Adjust label position to make space for icon */
+    color: #aaa;
+    transition: 0.2s ease all;
+  }
+  
+  
+  
+  .resetPassword {
+    text-align: right;
+    margin-bottom: 0.7rem;
+    color: #666;
+    margin-top: 0.5rem;
+  }
+  
+  .button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4a90e2;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .button:hover {
+    background-color: #357ab8;
+  }
+  
+  .text {
+    text-align: center;
+    color: #666;
+  }
+  
+  .link {
+    color: #4a90e2;
+    text-decoration: none;
+  }
+  
+  .link:hover {
+    text-decoration: underline;
+  }
+  
+  .error {
+    color: red;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  
+  
