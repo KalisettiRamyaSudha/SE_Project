@@ -34,12 +34,12 @@ const Product = () => {
   return (
     <div className={Styles.container}>
       <div className={Styles.warrantyLeft}>
-        <h3>Warrnty Left </h3>
-        <p> {warranty} days</p>
-        
-        <Link to={`/home/claim/${productId}`}>
-          <button className={Styles.claimButton}>Claim</button>
-        </Link>
+        <h3>Warrnty</h3>
+        <p className={Styles.warranty}>
+          {productData.warrantyPeriod
+            ? productData.warrantyPeriod + " Days"
+            : "No Warranty Information"}
+        </p>
 
         <div className={Styles.product}>
           <img src={productData.productImage} alt="product img" />
@@ -57,13 +57,6 @@ const Product = () => {
           <strong>Brand:</strong> {productData.brand}
         </p>
 
-        <p className={Styles.warranty}>
-          <strong>Warranty: </strong>
-
-          {productData.warrantyPeriod
-            ? productData.warrantyPeriod.slice(0, 10)
-            : "No Warranty Information"}
-        </p>
         <p>
           <strong>Manufacturing Address:</strong>{" "}
           {productData.manufacturingAddress}
@@ -77,6 +70,9 @@ const Product = () => {
         <p className={Styles.description}>
           <strong>Description :</strong> {productData.description}
         </p>
+        <Link to={`/home/claim/${productId}`}>
+          <button className={Styles.claimButton}>Claim</button>
+        </Link>
       </div>
     </div>
   );
