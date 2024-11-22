@@ -22,7 +22,7 @@ const ProductsSchema = new mongoose.Schema({
         required: true,
     },
     warrantyPeriod:{
-        type: Date,
+        type: Number,
     },
     manufacturingAddress:{
         type: String,
