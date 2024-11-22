@@ -63,3 +63,19 @@ const addWarranty = async (req, res) => {
         .json({ error: "An error occurred while getting the warranty" });
     }
   }
+
+  const getWarrantyById = async (req, res) => {
+    const { productId } = req.params;
+    try {
+        const product = await Product.findById(productId);
+        if (!product) {
+            return res.status(200).json({ productNotFound: "Product not found" });
+        }
+        return res.status(200).json({ warranty: product.warranty });
+    } catch (error) {
+        console.error(error);
+        return res
+            .status(500)
+            .json({ error: "An error occurred while getting the warranty" });
+    }
+};
