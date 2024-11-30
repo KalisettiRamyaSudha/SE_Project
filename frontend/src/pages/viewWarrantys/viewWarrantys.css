@@ -3,9 +3,62 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 100vh;
     margin-left: 200px;
     background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+}
+
+.search{
+    padding-left: 250px;
+    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.searchDiv input{
+    width: 20vw;
+}
+
+.or{
+    margin:  0px 100px;   
+}
+
+.search label{
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.dates {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    margin-bottom: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.searchBtn{
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    width: 150px;
+    font-size: 18px;
+}
+
+.searchBtn:hover{
+    background-color: #0069d9;
+}
+
+.main{
+    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+    min-height: 100vh;
+    padding: 10px 30px;
 }
 
 .table{
