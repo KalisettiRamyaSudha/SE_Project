@@ -9,6 +9,7 @@ import Navbar from "./Layout/Navbar/Navbar";
 import ClaimWarranty from "./Pages/ClaimWarranty/ClaimWarranty";
 import Layout from "./Layout/Layout/Layout";
 import ViewWarranties from "./Pages/ViewWarranties/ViewWarranties";
+import WarrantyCard from "./Pages/WarrantyCard/WarrantyCard";
 
 const App = () => {
   const userId = localStorage.getItem("userId");
@@ -27,6 +28,7 @@ const App = () => {
             <Route path="view-warranties" element={<ViewWarranties />} />
             <Route path="product/:productId" element={<Product />} />
             <Route path="claim/:productId" element={<ClaimWarranty />} />
+            <Route path="warranty" element={<WarrantyCard />} />
           </Route>
         </Routes>
       </BrowserRouter>
