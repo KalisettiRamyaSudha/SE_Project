@@ -1,0 +1,78 @@
+.container {
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+    margin-left: 200px;
+}
+
+h3 {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 700px;
+    padding: 10px;
+    margin: 0px auto;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.formContainer {
+    flex: 1;
+    padding-right: 20px;
+}
+
+.formGroup {
+    margin-bottom: 5px;
+}
+
+.formGroup label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.ptag{
+    border-bottom: 1px solid #ddd;
+    margin: 0px;
+    margin-bottom: 20px;
+}
+
+.imageContainer {
+    flex: 1;
+    max-width: 500px;
+}
+
+.warrantyImage {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.imageContainer{
+    position: relative;
+    width: 200px;
+}
+
+.warrantyPeriod{
+    position: absolute;
+    top: 65%;
+    left: 49.8%;
+    transform: translate(-50%, -50%);
+    font-size: .7rem;
+    font-weight: bold;
+    color: rgb(230, 195, 42);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    background-color: rgb(49, 48, 48);
+    padding: 2px 3px 4px 3px;
+    border-radius: 2px
+}
