@@ -39,7 +39,7 @@ const ViewWarranties = () => {
         const timeDiff = expiration.getTime() - today.getTime();
         const daysLeft = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
 
-        return daysLeft >= 0 ? `${daysLeft} days` : <p style={{ color: "red" }}>Expired</p>;
+        return daysLeft >= 0 ? `${daysLeft+1} days` : <p style={{ color: "red" }}>Expired</p>;
     };
 
     const filteredWarranties = warranty.filter(item => {

@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import axios from "../../axios";
 import { Link, useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify"; // Import ToastContainer and toast
-import "react-toastify/dist/ReactToastify.css"; // Import CSS for toast notifications
+import { ToastContainer, toast } from "react-toastify"; 
+import "react-toastify/dist/ReactToastify.css"; 
 import styles from "./Signup.module.css";
-import "@fortawesome/fontawesome-free/css/all.min.css"; // Import Font Awesome CSS
+import "@fortawesome/fontawesome-free/css/all.min.css"; 
 
 const Signup = () => {
   const [signup, setSignup] = useState({
@@ -12,7 +12,7 @@ const Signup = () => {
     email: "",
     password: "",
   });
-  const [showPassword, setShowPassword] = useState(false); // State to toggle password visibility
+  const [showPassword, setShowPassword] = useState(false); 
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -26,15 +26,14 @@ const Signup = () => {
       const res = await axios.post("/signup", { ...signup });
 
       if (res.data.EnterAllDetails) {
-        toast.error(res.data.EnterAllDetails); // Show error toast
+        toast.error(res.data.EnterAllDetails); 
       } else if (res.data.AlreadyExist) {
-        toast.error(res.data.AlreadyExist); // Show error toast
+        toast.error(res.data.AlreadyExist); 
       } else {
         const userId = res.data._id;
         toast.success("Signup successful!"); 
-        localStorage.setItem("userId", userId);// Show success toast
+        localStorage.setItem("userId", userId);
 
-        // Delay navigation by 2 seconds
         setTimeout(() => {
           navigate(`/home`);
           window.location.reload()
@@ -42,11 +41,10 @@ const Signup = () => {
       }
     } catch (error) {
       console.log(error);
-      toast.error("An error occurred while signing up. Please try again."); // Show error toast
+      toast.error("An error occurred while signing up. Please try again."); 
     }
   };
 
-  // Function to toggle password visibility
   const togglePasswordVisibility = () => {
     setShowPassword((prevState) => !prevState);
   };
@@ -57,7 +55,7 @@ const Signup = () => {
         <h2>Signup</h2>
 
         <div className={styles.inputContainer}>        
-          <i className={`fas fa-user ${styles.icon}`}></i> {/* Name Icon */}
+          <i className={`fas fa-user ${styles.icon}`}></i> 
           <input 
             autoFocus
             placeholder="Enter Your Name"
@@ -69,7 +67,7 @@ const Signup = () => {
           />
         </div>
         <div className={styles.inputContainer}>
-          <i className={`fas fa-envelope ${styles.icon}`}></i> {/* Email Icon */}
+          <i className={`fas fa-envelope ${styles.icon}`}></i> 
           <input
             placeholder="Enter Your Email"
             type="email"
@@ -83,14 +81,14 @@ const Signup = () => {
         <div className={styles.inputContainer}>
           <i className={`fas fa-lock ${styles.icon}`}></i>
           <input autoComplete="off"
-            type={showPassword ? "text" : "password"} // Toggle between text and password types
+            type={showPassword ? "text" : "password"} 
             placeholder="Enter Your Password"
             name="password"
             onChange={handleChange}
             value={signup.password}
             className={styles.input}
           />
-          {/* Eye Icon for showing/hiding password */}
+
           <i
             className={`fas ${showPassword ? "fa-eye-slash" : "fa-eye"} ${styles.eyeIcon}`}
             onClick={togglePasswordVisibility}

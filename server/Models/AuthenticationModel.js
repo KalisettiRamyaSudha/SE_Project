@@ -7,8 +7,6 @@ const UserSchema = new mongoose.Schema({
     },
     email: {
         type: String,
-        required: true,
-        unique: true
     },
     password: {
         type: String
@@ -26,11 +24,12 @@ const UserSchema = new mongoose.Schema({
         },
         purchaseDate: {
             type: Date,
-            required: true
         },
         purchaseAddress: {
             type: String,
-            required: true
+        },
+        warrantyPeriod: {
+            type: Date,
         }
     }]
 

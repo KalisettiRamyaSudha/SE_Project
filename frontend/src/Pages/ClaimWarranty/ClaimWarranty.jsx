@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "../../axios";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Styles from "./ClaimWarranty.module.css";
@@ -9,11 +9,54 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 const ClaimWarranty = () => {
   const [productData, setProductData] = useState({
     purchaseDate: "",
-    warrantyPeriod: "",
     purchaseAddress: "",
+    productId: "",
+    warrantyPeriod: "",
   });
 
+  const [warrantyInDays, setWarrantyInDays] = useState(0);
+
+  
+
+ 
+
+
+  const productIdData = useParams().productId;
+  console.log(productIdData);
+
   const userId = localStorage.getItem("userId");
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const productId = window.location.pathname.split("/").pop();
+    console.log(productId);
+    setProductData({ ...productData, productId });
+  }, []);
+
+  const handleGetProductData = async () => {
+    console.log(productIdData);
+    try {
+      const res = await axios(`/product/${productIdData}`);
+      setWarrantyInDays(res.data.warrantyPeriod);
+      console.log(res.data.warrantyPeriod);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    handleGetProductData();
+  }, []);
+
+
+  const warrantyCalculator = () => {
+    const purchaseDate = new Date(productData.purchaseDate); // Convert purchase date to a Date object
+    const warrantyDate = new Date(purchaseDate);
+    warrantyDate.setDate(warrantyDate.getDate() + warrantyInDays);// console.log(warrantyDate,"uyty");
+    console.log(warrantyDate,"uyty");
+    setProductData({ ...productData, warrantyPeriod: warrantyDate });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,29 +64,31 @@ const ClaimWarranty = () => {
     try {
       toast.dismiss();
       const res = await axios.post(`/claim-warranty/${userId}`, {
-        purchaseDate:productData.purchaseDate,
+        purchaseDate: productData.purchaseDate,
+        purchaseAddress: productData.purchaseAddress,
+        productId: productData.productId,
         warrantyPeriod: productData.warrantyPeriod,
-        purchaseAddress: productData.purchaseAddress
-        
       });
 
       if (res.data.missingFields) {
         toast.error("All fields are required!");
-        
-      }
-
-      else if (res.data.userNotFound) {
+      } else if (res.data.userNotFound) {
         toast.error(res.data.userNotFound);
-        
-      } else if(res.data.warrantyAdded) {
+      }
+        else if (res.data.warrantyAlreadyAdded) {
+          toast.error(res.data.warrantyAlreadyAdded);
+        }
+      else if (res.data.warrantyAdded) {
         toast.success("Claimed warranty successfully!");
-        
       }
     } catch (error) {
       console.log(error);
       toast.error("An error occurred. Please try again.");
     }
   };
+
+
+  
 
   return (
     <form className={Styles.form} onSubmit={handleSubmit}>
@@ -63,16 +108,7 @@ const ClaimWarranty = () => {
           }
         />
 
-        <label htmlFor="warrantyPeriod">Warranty Period:</label>
-        <input
-          type="date"
-          id="warrantyPeriod"
-          name="warrantyPeriod"
-          value={productData.warrantyPeriod}
-          onChange={(e) =>
-            setProductData({ ...productData, warrantyPeriod: e.target.value })
-          }
-        /> 
+        
 
         <label htmlFor="purchaseAddress">Purchase Address:</label>
         <input
@@ -82,13 +118,14 @@ const ClaimWarranty = () => {
           value={productData.purchaseAddress}
           onChange={(e) =>
             setProductData({ ...productData, purchaseAddress: e.target.value })
+
           }
         />
       </div>
 
       <ToastContainer />
 
-      <button className={Styles.button} type="submit">
+      <button onClick={warrantyCalculator} className={Styles.button} type="submit">
         Submit
       </button>
     </form>

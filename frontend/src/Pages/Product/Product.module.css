@@ -5,7 +5,7 @@
     align-items: flex-start;
     min-height: 100vh;
     margin-left: 200px;
-    
+    gap: 30px;
     background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
 }
 
@@ -15,6 +15,26 @@
     place-items: center;
 }
 
+.claimButton{
+    width: 100%;
+    font-size: 14px;
+    background-color: #007bff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    
+
+}
+
+.claimButton:hover{
+    background-color: #318ff3;
+    transition: 0.4s ;
+}
+
+
 .warrantyLeft h3{
     color: red;
     height: 0px;
@@ -23,8 +43,7 @@
 }
 
 .productInfo {
-    
-    padding-top: 70px
+    padding-top: 50px
 }
 
 .product h1{
@@ -32,7 +51,7 @@ text-align: center;
 }
 
 .product img {
-    min-width: 600px;
+    width: 450px;
     height: 350px;
 }
 
@@ -44,6 +63,7 @@ text-align: center;
         background: none;
         align-items: center;
         justify-content: baseline;
+        margin-left: 210px;
     }
     .product img {
         padding: 10px 15px;
@@ -84,10 +104,26 @@ text-align: center;
 
 
 @media screen and (max-width: 500px) {
+
+    .container{
+        margin-left: 0px;
+    }
+
     .product img {
         padding: 10px 15px;
         min-width: 300px;
         max-width: 580px;
         height: 220px;
+        margin-left: 0px;
+    }
+    .claimButton{
+        font-size: 14px;
+        margin: 0px auto;
+        width: 300px;
+        margin-bottom: 20px;
+        padding: 5px 10px;
+        background-color: #494a4b;
+        color: #fff;
+        transition: background-color 0.3s ease, color 0.3s ease;
     }
 }
