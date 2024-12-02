@@ -1,0 +1,19 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /home/ubuntu/se-project
+file_exists_behavior: OVERWRITE
+hooks:
+  BeforeInstall:
+    - location: codedeploy/before_install.sh
+      timeout: 300
+      runas: ubuntu
+  AfterInstall:
+    - location: codedeploy/after_install.sh
+      timeout: 600
+      runas: ubuntu
+  ApplicationStart:
+    - location: codedeploy/app_start.sh
+      timeout: 300
+      runas: ubuntu
