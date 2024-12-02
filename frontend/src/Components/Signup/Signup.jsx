@@ -58,7 +58,7 @@ const Signup = () => {
           <i className={`fas fa-user ${styles.icon}`}></i> 
           <input 
             autoFocus
-            placeholder="Enter Your Name"
+            placeholder="Enter Your Full Name"
             type="text"
             name="name"
             onChange={handleChange}
